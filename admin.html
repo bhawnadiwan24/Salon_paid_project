@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Arjun's Unisex Salon</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- FontAwesome styling for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-body">
+
+    <!-- Auth Gate / Login Modal -->
+    <div id="loginOverlay" class="modal-overlay active" style="background: var(--primary-blue);">
+        <div class="modal" style="transform: none;">
+            <div class="text-center mb-4">
+                <h2 class="serif-font" style="color: var(--primary-blue);">Admin Portal</h2>
+                <p>Arjun's Unisex Salon</p>
+            </div>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="adminEmail" class="form-control" required placeholder="admin@domain.com">
+                </div>
+                <div class="form-group mb-4">
+                    <label>Password</label>
+                    <input type="password" id="adminPassword" class="form-control" required placeholder="••••••••">
+                </div>
+                <p class="mb-3" style="font-size: 0.85rem; color: #856404; background: #fff3cd; padding: 10px; border-radius: 4px;" id="authMessage">
+                    <i class="fas fa-info-circle"></i> Login below, or create your admin account.
+                </p>
+                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1; justify-content: center;" id="loginBtn">Login</button>
+                    <button type="button" class="btn btn-outline" style="flex: 1; justify-content: center;" id="registerBtn">Create Admin Account</button>
+                </div>
+                
+                <div style="display: flex; align-items: center; margin: 1.5rem 0; color: #999;">
+                    <hr style="flex: 1; border: 0; border-top: 1px solid #ddd;">
+                    <span style="padding: 0 10px; font-size: 0.85rem;">OR</span>
+                    <hr style="flex: 1; border: 0; border-top: 1px solid #ddd;">
+                </div>
+
+                <button type="button" class="btn" id="googleLoginBtn" style="width: 100%; justify-content: center; background: #fff; color: #444; border: 1px solid #ddd; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: all 0.2s;">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" style="width: 18px; height: 18px; margin-right: 10px;">
+                    Continue with Google
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Layout -->
+    <div class="admin-layout" id="appLayout" style="display: none;">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-text">
+                <h1 class="serif-font">Arjun's</h1>
+                <p>Admin Portal</p>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="active">
+                    <a href="#" data-target="dashboard"><i class="fas fa-chart-pie"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="#" data-target="services"><i class="fas fa-cut"></i> Service Management</a>
+                </li>
+                <li>
+                    <a href="#" data-target="gallery"><i class="fas fa-images"></i> Gallery Management</a>
+                </li>
+                <li>
+                    <a href="#" data-target="bookings"><i class="fas fa-calendar-alt"></i> Bookings</a>
+                </li>
+                <li class="mt-4">
+                    <a href="#" id="logoutBtn" style="color: #ff6b6b;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
+                <li style="margin-top: auto; padding-top: 2rem;">
+                    <a href="index.html" target="_blank"><i class="fas fa-external-link-alt"></i> View Website</a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- View: Dashboard -->
+            <div id="view-dashboard" class="content-view">
+                <div class="d-flex justify-content-between align-items-center mb-4" style="display:flex; justify-content:space-between;">
+                    <h2>Overview</h2>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                        <div class="stat-info">
+                            <h4>Total Bookings</h4>
+                            <div class="number" id="statTotal">0</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #FFF3CD; color: #856404;"><i class="fas fa-hourglass-half"></i></div>
+                        <div class="stat-info">
+                            <h4>Pending Bookings</h4>
+                            <div class="number" id="statPending">0</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #D4EDDA; color: #155724;"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-info">
+                            <h4>Completed</h4>
+                            <div class="number" id="statCompleted">0</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="data-table-container">
+                    <h3 class="mb-3">Recent Bookings</h3>
+                    <table id="recentBookingsTable">
+                        <thead>
+                            <tr>
+                                <th>Client</th>
+                                <th>Service</th>
+                                <th>Date & Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- View: Service Management -->
+            <div id="view-services" class="content-view d-none">
+                <div style="display:flex; justify-content:space-between; align-items:center;" class="mb-4">
+                    <h2>Manage Services</h2>
+                    <button class="btn btn-primary" id="openAddServiceModal">
+                        <i class="fas fa-plus"></i> Add Service
+                    </button>
+                </div>
+                
+                <div class="data-table-container">
+                    <table id="servicesTable">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- View: Gallery Management -->
+            <div id="view-gallery" class="content-view d-none">
+                <div style="display:flex; justify-content:space-between; align-items:center;" class="mb-4">
+                    <h2>Manage Gallery</h2>
+                    <button class="btn btn-primary" id="openAddGalleryModal">
+                        <i class="fas fa-upload"></i> Upload Image
+                    </button>
+                </div>
+                
+                <div class="gallery-grid" id="adminGalleryGrid">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+
+            <!-- View: Bookings -->
+            <div id="view-bookings" class="content-view d-none">
+                <div style="display:flex; justify-content:space-between; align-items:center;" class="mb-4">
+                    <h2>All Bookings</h2>
+                </div>
+                
+                <div class="data-table-container">
+                    <table id="allBookingsTable">
+                        <thead>
+                            <tr>
+                                <th>Client Name</th>
+                                <th>Phone</th>
+                                <th>Service</th>
+                                <th>Date & Time</th>
+                                <th>Payment</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Modals -->
+
+    <!-- Add/Edit Service Modal -->
+    <div id="serviceModal" class="modal-overlay">
+        <div class="modal">
+            <h3 class="serif-font mb-4" id="serviceModalTitle">Add Service</h3>
+            <form id="serviceForm">
+                <input type="hidden" id="serviceId">
+                <div class="form-group">
+                    <label>Service Name</label>
+                    <input type="text" id="serviceName" class="form-control" required placeholder="e.g. Hair Spa">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="serviceDesc" class="form-control" rows="3" required placeholder="Service details..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Price (₹)</label>
+                    <input type="number" id="servicePrice" class="form-control" required placeholder="e.g. 500">
+                </div>
+                <div class="form-group">
+                    <label>Service Image</label>
+                    <input type="file" id="serviceImage" class="form-control" accept="image/*">
+                    <small style="color:var(--text-muted)">Max size 2MB</small>
+                </div>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button type="button" class="btn btn-outline" style="flex:1;" onclick="closeModals()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="flex:1;" id="saveServiceBtn">Save Service</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Gallery Image Modal -->
+    <div id="galleryModal" class="modal-overlay">
+        <div class="modal">
+            <h3 class="serif-font mb-4">Upload to Gallery</h3>
+            <form id="galleryForm">
+                <div class="form-group">
+                    <label>Title (Optional)</label>
+                    <input type="text" id="galleryTitle" class="form-control" placeholder="e.g. Bridal Makeup">
+                </div>
+                <div class="form-group">
+                    <label>Image File</label>
+                    <input type="file" id="galleryImage" class="form-control" accept="image/*" required>
+                </div>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button type="button" class="btn btn-outline" style="flex:1;" onclick="closeModals()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="flex:1;" id="saveGalleryBtn">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Component -->
+    <div id="toast" style="position: fixed; top: 20px; right: 20px; background: var(--primary-blue); color: #fff; padding: 1rem 2rem; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); opacity: 0; transform: translateX(100px); transition: all 0.3s ease; z-index: 3000;">
+        Message goes here
+    </div>
+
+    <!-- Logic -->
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>

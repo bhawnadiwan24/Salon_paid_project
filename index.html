@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arjun's Unisex Salon | Premium Care</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- FontAwesome styling for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo-text">
+                <h1>Arjun's</h1>
+                <p>Unisex Salon</p>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#book" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="serif-font">Welcome to <span class="highlight-gold">Arjun’s</span> Unisex Salon</h1>
+            <p>Transform Your Style with Experts. Jashpur district’s premium unisex salon.</p>
+            <a href="#book" class="btn btn-primary btn-lg"><i class="fas fa-cut"></i> Book Appointment</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="section-header">
+            <p>Know The Experts</p>
+            <h2 class="serif-font">Meet Our Founders</h2>
+        </div>
+        <div class="owners-grid">
+            <!-- Owner 1 -->
+            <div class="owner-card">
+                <div class="owner-image">
+                    <img src="images/arjun.png" alt="Arjun - Master Barber" class="founder-img-zoom">
+                </div>
+                <div class="owner-info">
+                    <h3>Arjun</h3>
+                    <p class="owner-role">Master Barber & Founder</p>
+                    <p class="owner-desc">With over a decade of experience in premium grooming, Arjun brings
+                        unparalleled precision and style to men's and women's hair design. His vision built this salon's
+                        legacy in Jashpur.</p>
+                </div>
+            </div>
+
+            <!-- Owner 2 -->
+            <div class="owner-card">
+                <div class="owner-image">
+                    <img src="images/vinita.png" alt="Vinita - Senior Cosmetologist" class="founder-img-vinita">
+                </div>
+                <div class="owner-info">
+                    <h3>Vinita</h3>
+                    <p class="owner-role">Beauty specialist & Co-Founder</p>
+                    <p class="owner-desc">With a deep passion for beauty and aesthetics, Vinita specializes in premium 
+                        skincare and expert styling. Her commitment to personalized care and 
+                        professional excellence has established her as a leading specialist in women's grooming.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header">
+            <p>What We Offer</p>
+            <h2 class="serif-font">Our Premium Services</h2>
+        </div>
+        <div class="services-grid" id="servicesGrid">
+            <!-- Services will be dynamically injected here by app.js -->
+            <div class="text-center" style="grid-column: 1 / -1;">
+                <i class="fas fa-spinner fa-spin fa-2x" style="color: var(--primary-blue)"></i>
+                <p class="mt-4">Loading services...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" style="background-color: white;">
+        <div class="section-header">
+            <p>Our Masterpieces</p>
+            <h2 class="serif-font">Salon Gallery</h2>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Gallery images will be injected here -->
+        </div>
+    </section>
+
+    <!-- Booking & Payment Section -->
+    <section id="book" class="booking-section">
+        <div class="booking-container">
+            <div class="booking-info">
+                <h2 class="serif-font mb-3">Reserve Your Spot</h2>
+                <p class="mb-4 text-light">Experience luxury grooming and styling. Book your session today to avoid
+                    waiting in line.</p>
+                <div class="mb-3">
+                    <i class="fas fa-map-marker-alt mb-1" style="color: var(--accent-gold);"></i>
+                    <p>Govind Path, Main Road, near HDFC Bank<br>Jashpur (Chhattisgarh)</p>
+                </div>
+                <div class="mb-3">
+                    <i class="fas fa-phone-alt mb-1" style="color: var(--accent-gold);"></i>
+                    <div style="margin-top: 5px;">
+                        <div
+                            style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap;">
+                            <span style="color: rgba(255,255,255,0.8); min-width: 125px;">+91 93403 22855</span>
+                            <a href="https://wa.me/919340322855" target="_blank"
+                                style="display: flex; align-items: center; gap: 6px; background: #25D366; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">
+                                <i class="fab fa-whatsapp"></i> Chat
+                            </a>
+                            <a href="tel:+919340322855"
+                                style="display: flex; align-items: center; gap: 6px; background: var(--primary-red); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">
+                                <i class="fas fa-phone-alt"></i> Call
+                            </a>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                            <span style="color: rgba(255,255,255,0.8); min-width: 125px;">+91 99818 23881</span>
+                            <a href="https://wa.me/919981823881" target="_blank"
+                                style="display: flex; align-items: center; gap: 6px; background: #25D366; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">
+                                <i class="fab fa-whatsapp"></i> Chat
+                            </a>
+                            <a href="tel:+919981823881"
+                                style="display: flex; align-items: center; gap: 6px; background: var(--primary-red); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">
+                                <i class="fas fa-phone-alt"></i> Call
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Map: embed below phone numbers inside the blue booking-info box -->
+                <div class="contact-map" aria-hidden="false">
+                    <div class="map-embed" aria-hidden="false">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Govind+Path+Main+Road+near+HDFC+Bank+Jashpur+Chhattisgarh"
+                            target="_blank" class="map-overlay-link">
+                            <div class="map-overlay">
+                                <span class="btn-map"><i class="fas fa-directions"></i> Get Directions</span>
+                            </div>
+                        </a>
+                        <iframe
+                            src="https://maps.google.com/maps?q=Govind%20Path%20Main%20Road%20near%20HDFC%20Bank%20Jashpur%20Chhattisgarh&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            aria-label="Govind Path, Main Road, near HDFC Bank, Jashpur (Chhattisgarh)">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <form id="bookingForm" class="booking-form">
+                <h3 class="mb-4">Appointment Details</h3>
+
+                <div class="form-group">
+                    <label for="b_name">Full Name</label>
+                    <input type="text" id="b_name" class="form-control" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="b_phone">Phone Number</label>
+                    <input type="tel" id="b_phone" class="form-control" placeholder="+91 XXXXX XXXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="b_service">Select Service</label>
+                    <select id="b_service" class="form-control" required>
+                        <option value="" disabled selected>Loading services...</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="b_date">Date</label>
+                        <input type="date" id="b_date" class="form-control" required>
+                    </div>
+
+                    <div class="form-group" style="flex: 1;">
+                        <label for="b_time">Time</label>
+                        <select id="b_time" class="form-control" required>
+                            <option value="09:00 AM">09:00 AM</option>
+                            <option value="10:00 AM">10:00 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="12:00 PM">12:00 PM</option>
+                            <option value="02:00 PM">02:00 PM</option>
+                            <option value="03:00 PM">03:00 PM</option>
+                            <option value="04:00 PM">04:00 PM</option>
+                            <option value="05:00 PM">05:00 PM</option>
+                            <option value="06:00 PM">06:00 PM</option>
+                            <option value="07:00 PM">07:00 PM</option>
+                            <option value="08:00 PM">08:00 PM</option>
+                            <option value="08:30 PM">08:30 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label>Payment Method</label>
+                    <div style="display: flex; gap: 1rem; margin-top: 10px;">
+                        <label
+                            style="flex: 1; display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; background: #fff;">
+                            <input type="radio" name="payment_method" value="online" checked
+                                style="width: 18px; height: 18px;">
+                            <div style="font-size: 0.9rem;">
+                                <strong>Online Payment</strong>
+                                <div style="font-size: 0.8rem; color: #666;">Pay now via Razorpay</div>
+                            </div>
+                        </label>
+                        <label
+                            style="flex: 1; display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; background: #fff;">
+                            <input type="radio" name="payment_method" value="offline"
+                                style="width: 18px; height: 18px;">
+                            <div style="font-size: 0.9rem;">
+                                <strong>Pay at Salon</strong>
+                                <div style="font-size: 0.8rem; color: #666;">Pay after service</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <p class="mb-3"
+                        style="font-size: 0.9rem; color: var(--text-muted); padding: 10px; background: rgba(10, 35, 81, 0.05); border-radius: 6px;"
+                        id="payment-note">
+                        <i class="fas fa-info-circle"></i> Service amount will be collected securely.
+                    </p>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        Pay & Confirm Booking
+                    </button>
+                    <!-- Loading state indicator container -->
+                    <div id="booking-loading" class="text-center mt-2 d-none">
+                        <i class="fas fa-spinner fa-spin text-primary"></i> Processing...
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Arjun's Unisex Salon</h3>
+                <p>A Unisex Family Salon delivering Jashpur district’s premium care routines and styling
+                    transformations.
+                </p>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <a href="#" style="font-size: 1.5rem; color: var(--white);"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="font-size: 1.5rem; color: var(--white);"><i class="fab fa-facebook"></i></a>
+                    <a href="https://wa.me/919340322855" target="_blank"
+                        style="font-size: 1.5rem; color: var(--white);"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="serif-font">Quick Links</h3>
+                <ul style="list-style: none;">
+                    <li><a href="#home"><i class="fas fa-chevron-right"
+                                style="font-size: 0.8rem; margin-right: 8px;"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"
+                                style="font-size: 0.8rem; margin-right: 8px;"></i> About</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"
+                                style="font-size: 0.8rem; margin-right: 8px;"></i> Services</a></li>
+                    <li><a href="#gallery"><i class="fas fa-chevron-right"
+                                style="font-size: 0.8rem; margin-right: 8px;"></i> Gallery</a></li>
+                    <li><a href="admin.html"><i class="fas fa-lock" style="font-size: 0.8rem; margin-right: 8px;"></i>
+                            Admin Login</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 class="serif-font">Contact Info</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 15px;"><i class="fas fa-map-marker-alt"
+                            style="margin-right: 10px; color: var(--accent-gold);"></i>
+                        Govind Path, Main Road, near HDFC Bank<br>Jashpur (Chhattisgarh)</li>
+                    <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap;">
+                        <div style="min-width: 135px;">
+                            <i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-gold);"></i>
+                            <span style="color: rgba(255,255,255,0.8);">9340322855</span>
+                        </div>
+                        <a href="https://wa.me/919340322855" target="_blank"
+                            style="display: flex; align-items: center; gap: 6px; background: #25D366; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">
+                            <i class="fab fa-whatsapp"></i> Chat
+                        </a>
+                        <a href="tel:+919340322855"
+                            style="display: flex; align-items: center; gap: 6px; background: var(--primary-red); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">
+                            <i class="fas fa-phone-alt"></i> Call
+                        </a>
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                        <div style="min-width: 135px;">
+                            <i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-gold);"></i>
+                            <span style="color: rgba(255,255,255,0.8);">9981823881</span>
+                        </div>
+                        <a href="https://wa.me/919981823881" target="_blank"
+                            style="display: flex; align-items: center; gap: 6px; background: #25D366; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">
+                            <i class="fab fa-whatsapp"></i> Chat
+                        </a>
+                        <a href="tel:+919981823881"
+                            style="display: flex; align-items: center; gap: 6px; background: var(--primary-red); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-decoration: none;">
+                            <i class="fas fa-phone-alt"></i> Call
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Arjun's Unisex Salon. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Overlay -->
+    <div id="toast"
+        style="position: fixed; bottom: 20px; right: 20px; background: #333; color: #fff; padding: 1rem 2rem; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); opacity: 0; transform: translateY(100px); transition: all 0.3s ease; z-index: 3000;">
+        Message goes here
+    </div>
+
+    <!-- External Libraries -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Application Logic (Modular ES6) -->
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
