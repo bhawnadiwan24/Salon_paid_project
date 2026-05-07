@@ -27,6 +27,34 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// ---- Mobile Navbar Logic ----
+const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+const navLinks = document.getElementById('navLinks');
+
+if (mobileMenuIcon && navLinks) {
+    mobileMenuIcon.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = mobileMenuIcon.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    // Close menu when clicking any nav link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = mobileMenuIcon.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
+}
+
 // ---- Fetch Data ----
 
 // Fallback static data if Firebase isn't configured yet to ensure UI works visually
