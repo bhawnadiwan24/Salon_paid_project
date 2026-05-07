@@ -54,8 +54,12 @@
     <!-- Main Dashboard Layout -->
     <div class="admin-layout" id="appLayout" style="display: none;">
         
+        <!-- Mobile Sidebar Overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
         <!-- Sidebar Navigation -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="adminSidebar">
+            <button class="sidebar-close-btn" id="sidebarCloseBtn"><i class="fas fa-times"></i></button>
             <div class="logo-text">
                 <h1 class="serif-font">Arjun's</h1>
                 <p>Admin Portal</p>
@@ -86,6 +90,12 @@
         <!-- Main Content Area -->
         <main class="main-content">
             
+            <!-- Mobile Header -->
+            <div class="admin-mobile-header">
+                <button id="adminMobileToggle" class="btn-icon"><i class="fas fa-bars"></i></button>
+                <h2 class="serif-font" style="margin: 0; color: var(--primary-blue); font-size: 1.5rem;">Admin Portal</h2>
+            </div>
+
             <!-- View: Dashboard -->
             <div id="view-dashboard" class="content-view">
                 <div class="d-flex justify-content-between align-items-center mb-4" style="display:flex; justify-content:space-between;">

@@ -774,6 +774,58 @@ th {
     display: none;
 }
 
+/* Admin Mobile Sidebar UI */
+.admin-mobile-header {
+    display: none;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius-md);
+}
+
+.admin-mobile-header .btn-icon {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+    cursor: pointer;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 1500;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sidebar-close-btn {
+    display: none;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.sidebar-close-btn:hover {
+    transform: scale(1.1);
+}
+
 /* Responsive */
 @media (max-width: 900px) {
     /* Navbar responsive */
@@ -830,7 +882,10 @@ th {
     .booking-container { flex-direction: column; }
     .hero h1 { font-size: 3rem; }
     
-    .sidebar { transform: translateX(-100%); transition: var(--transition-smooth); }
+    .admin-mobile-header { display: flex; }
+    .sidebar-close-btn { display: block; }
+    
+    .sidebar { transform: translateX(-100%); transition: var(--transition-smooth); z-index: 1501; }
     .sidebar.open { transform: translateX(0); }
     .main-content { margin-left: 0; padding: 1rem; }
 }

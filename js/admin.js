@@ -61,6 +61,26 @@ window.closeModals = () => {
     });
 };
 
+// ---- Mobile Sidebar Logic ----
+const adminSidebar = document.getElementById('adminSidebar');
+const adminMobileToggle = document.getElementById('adminMobileToggle');
+const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+function openSidebar() {
+    if (adminSidebar) adminSidebar.classList.add('open');
+    if (sidebarOverlay) sidebarOverlay.classList.add('active');
+}
+
+function closeSidebar() {
+    if (adminSidebar) adminSidebar.classList.remove('open');
+    if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+}
+
+if (adminMobileToggle) adminMobileToggle.addEventListener('click', openSidebar);
+if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', closeSidebar);
+if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+
 // ---- View Routing Logic ----
 const navLinks = document.querySelectorAll('.nav-menu a[data-target]');
 const views = document.querySelectorAll('.content-view');
@@ -85,7 +105,11 @@ navLinks.forEach(link => {
         
         // Mobile sidebar close
         if(window.innerWidth <= 900) {
-            document.querySelector('.sidebar').classList.remove('open');
+            if (typeof closeSidebar === 'function') {
+                closeSidebar();
+            } else {
+                document.querySelector('.sidebar').classList.remove('open');
+            }
         }
     });
 });
