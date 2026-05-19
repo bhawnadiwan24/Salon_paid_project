@@ -829,54 +829,70 @@ th {
 /* Responsive */
 @media (max-width: 900px) {
     /* Navbar responsive */
+    .logo-container {
+        position: relative;
+        z-index: 2001; /* Keep logo visible above menu */
+    }
     .mobile-menu-icon {
         display: block;
+        position: relative;
+        z-index: 2001; /* Keep icon visible above menu */
     }
     .desktop-book {
         display: none !important;
     }
     .nav-links {
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 0;
         left: 0;
         width: 100%;
-        background: var(--glass-bg);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        height: 100vh;
+        background-color: #ffffff;
+        opacity: 0;
+        visibility: hidden;
         flex-direction: column;
         align-items: center;
-        gap: 0;
+        justify-content: center;
+        gap: 1.5rem;
         padding: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
-        border-bottom: 1px solid var(--glass-border);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        z-index: 2000;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     }
     .nav-links.active {
-        max-height: 500px;
-        padding: 1rem 0 2rem 0;
+        opacity: 1;
+        visibility: visible;
     }
     .nav-links li {
         width: 100%;
         text-align: center;
+        transform: translateY(20px);
+        transition: transform 0.4s ease-in-out;
+    }
+    .nav-links.active li {
+        transform: translateY(0);
     }
     .nav-links li a {
-        display: block;
+        display: inline-block;
         padding: 1rem 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--primary-blue);
     }
     .nav-links li a::after {
         display: none; /* Disable gold line underline effect on mobile */
     }
     .mobile-book {
         display: block;
-        margin-top: 0.5rem;
+        margin-top: 1.5rem;
         padding: 0 2rem;
     }
     .mobile-book a {
         width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
         justify-content: center;
-        padding: 0.8rem !important;
+        padding: 1rem !important;
+        font-size: 1.1rem;
     }
 
     .booking-container { flex-direction: column; }
@@ -888,6 +904,62 @@ th {
     .sidebar { transform: translateX(-100%); transition: var(--transition-smooth); z-index: 1501; }
     .sidebar.open { transform: translateX(0); }
     .main-content { margin-left: 0; padding: 1rem; }
+    
+    /* Responsive Tables */
+    .data-table-container table, 
+    .data-table-container thead, 
+    .data-table-container tbody, 
+    .data-table-container th, 
+    .data-table-container td, 
+    .data-table-container tr {
+        display: block;
+    }
+    
+    .data-table-container thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    .data-table-container tr {
+        border-bottom: 2px solid #eee;
+        margin-bottom: 1.5rem;
+        border-radius: var(--border-radius-md);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        padding: 1rem;
+        background: var(--white);
+        border: 1px solid #eee;
+    }
+    
+    .data-table-container td {
+        border: none;
+        border-bottom: 1px solid #f8f9fa;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+        min-height: 48px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    
+    .data-table-container td:before {
+        position: absolute;
+        left: 1rem;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--text-muted);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .data-table-container td:last-child {
+        border-bottom: 0;
+    }
 }
 
 /* Animations */

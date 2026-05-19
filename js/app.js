@@ -278,7 +278,11 @@ async function finalizeBooking(name, phone, serviceName, price, date, time, payI
         try {
             await addDoc(collection(db, "bookings"), bookingData);
         } catch(dbErr) {
-            console.warn("Firestore save skipped. Config error?", dbErr);
+            console.error("Firestore save skipped. Config error/rules?", dbErr);
+            showToast("Failed to save booking to database. Please check Firestore Rules.", true);
+            alert("BOOKING FAILED TO SAVE!\n\nIf you are the admin, please check your Firebase Firestore Rules. Unauthenticated users must be allowed to 'write' to the 'bookings' collection.");
+            resetButtonState();
+            return; // Stop execution, don't show success message
         }
 
         // 2. Send email via EmailJS

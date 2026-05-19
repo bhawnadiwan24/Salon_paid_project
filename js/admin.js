@@ -266,10 +266,10 @@ async function loadServices() {
 function renderServiceRow(id, data) {
     const tr = document.createElement('tr');
     tr.innerHTML = `
-        <td><img src="${data.image || 'https://via.placeholder.com/50'}" style="width: 50px; height: 50px; border-radius: 4px; object-fit: cover;"></td>
-        <td><strong>${data.name}</strong></td>
-        <td>₹${data.price}</td>
-        <td>
+        <td data-label="Image"><img src="${data.image || 'https://via.placeholder.com/50'}" style="width: 50px; height: 50px; border-radius: 4px; object-fit: cover;"></td>
+        <td data-label="Name"><strong>${data.name}</strong></td>
+        <td data-label="Price">₹${data.price}</td>
+        <td data-label="Actions">
             <button class="btn btn-outline" style="padding: 0.3rem 0.6rem;" onclick="deleteService('${id}')"><i class="fas fa-trash"></i></button>
         </td>
     `;
@@ -336,7 +336,7 @@ window.deleteService = async (id) => {
 // 2. Gallery Management
 const galleryModal = document.getElementById('galleryModal');
 const galleryForm = document.getElementById('galleryForm');
-const adminGalleryGrid = document.getElementById('adminGalleryGrid');
+const galleryTableBody = document.getElementById('galleryTableBody');
 
 document.getElementById('openAddGalleryModal').addEventListener('click', () => {
     galleryForm.reset();
@@ -346,23 +346,28 @@ document.getElementById('openAddGalleryModal').addEventListener('click', () => {
 async function loadGallery() {
     try {
         const querySnapshot = await getDocs(collection(db, "gallery"));
-        adminGalleryGrid.innerHTML = '';
+        galleryTableBody.innerHTML = '';
         
+        let hasItems = false;
         querySnapshot.forEach((docSnap) => {
+            hasItems = true;
             const data = docSnap.data();
-            const item = document.createElement('div');
-            item.className = 'gallery-item';
-            item.innerHTML = `
-                <img src="${data.url}" alt="${data.title}">
-                <div class="gallery-overlay" style="flex-direction: column; justify-content: center; align-items: center; gap: 10px; background: rgba(0,0,0,0.6)">
-                    <p style="color:white; font-size:0.9rem;">${data.title || 'No Title'}</p>
-                    <button class="btn btn-primary" onclick="deleteGalleryItem('${docSnap.id}')" style="padding: 0.3rem 1rem;"><i class="fas fa-trash"></i> Delete</button>
-                </div>
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td data-label="Image"><img src="${data.url}" alt="${data.title}" style="width: 80px; height: 60px; border-radius: 4px; object-fit: cover;"></td>
+                <td data-label="Title"><strong>${data.title || 'No Title'}</strong></td>
+                <td data-label="Actions">
+                    <button class="btn btn-outline" style="padding: 0.3rem 0.6rem;" onclick="deleteGalleryItem('${docSnap.id}')"><i class="fas fa-trash"></i></button>
+                </td>
             `;
-            adminGalleryGrid.appendChild(item);
+            galleryTableBody.appendChild(tr);
         });
+        
+        if (!hasItems) {
+            galleryTableBody.innerHTML = '<tr><td colspan="3" class="text-center">No images found. Upload one!</td></tr>';
+        }
     } catch(e) {
-        adminGalleryGrid.innerHTML = '<p>Gallery loaded from DB will appear here.</p>';
+        galleryTableBody.innerHTML = '<tr><td colspan="3" class="text-center">Gallery loaded from DB will appear here.</td></tr>';
     }
 }
 
@@ -463,35 +468,35 @@ function createBookingRow(id, data, isFullView) {
     
     if(isFullView) {
         tr.innerHTML = `
-            <td><strong>${data.name}</strong></td>
-            <td>${data.phone}</td>
-            <td>${data.serviceName}</td>
-            <td>${data.date} <br> <small>${data.time}</small></td>
-            <td>
+            <td data-label="Client Name"><strong>${data.name}</strong></td>
+            <td data-label="Phone">${data.phone}</td>
+            <td data-label="Service">${data.serviceName}</td>
+            <td data-label="Date & Time">${data.date} <br> <small>${data.time}</small></td>
+            <td data-label="Payment">
                 <span style="display:block; font-size:0.85rem; font-weight:600; color:${data.paymentMethod === 'Offline' ? '#e67e22' : '#27ae60'}">${data.paymentMethod || 'Online'}</span>
                 <small style="color:#888;">${data.paymentId || 'N/A'}</small>
             </td>
-            <td><span class="badge ${badgeClass}">${data.status}</span></td>
-            <td>
+            <td data-label="Status"><span class="badge ${badgeClass}">${data.status}</span></td>
+            <td data-label="Actions">
                 ${data.status !== 'Completed' ? `<button class="btn btn-outline" style="padding:0.2rem 0.5rem; font-size:0.8rem;" onclick="markBookingCompleted('${id}')"><i class="fas fa-check"></i> Complete</button>` : ''}
             </td>
         `;
     } else {
         tr.innerHTML = `
-            <td><strong>${data.name}</strong></td>
-            <td>${data.serviceName}</td>
-            <td>${data.date}</td>
-            <td><span class="badge ${badgeClass}">${data.status}</span></td>
+            <td data-label="Client"><strong>${data.name}</strong></td>
+            <td data-label="Service">${data.serviceName}</td>
+            <td data-label="Date">${data.date}</td>
+            <td data-label="Status"><span class="badge ${badgeClass}">${data.status}</span></td>
         `;
     }
     return tr;
 }
 
 window.markBookingCompleted = async (id) => {
-    if(confirm("Mark this appointment as Completed?")) {
+    if(confirm("Mark this appointment as Completed and remove it from the list?")) {
         try {
-            await updateDoc(doc(db, "bookings", id), { status: 'Completed' });
-            showToast("Booking completed!");
+            await deleteDoc(doc(db, "bookings", id));
+            showToast("Booking completed and removed!");
             loadBookings();
         } catch(e) {
             showToast("Error updating booking.", true);

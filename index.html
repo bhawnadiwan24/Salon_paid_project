@@ -31,7 +31,8 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li class="mobile-book"><a href="#book" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Appointment</a></li>
+            <li class="mobile-book"><a href="#book" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book
+                    Appointment</a></li>
         </ul>
         <a href="#book" class="btn btn-primary desktop-book"><i class="fas fa-calendar-check"></i> Book Appointment</a>
     </nav>
@@ -74,8 +75,8 @@
                 <div class="owner-info">
                     <h3>Vinita</h3>
                     <p class="owner-role">Beauty specialist & Co-Founder</p>
-                    <p class="owner-desc">With a deep passion for beauty and aesthetics, Vinita specializes in premium 
-                        skincare and expert styling. Her commitment to personalized care and 
+                    <p class="owner-desc">With a deep passion for beauty and aesthetics, Vinita specializes in premium
+                        skincare and expert styling. Her commitment to personalized care and
                         professional excellence has established her as a leading specialist in women's grooming.</p>
                 </div>
             </div>
@@ -210,38 +211,18 @@
                     </div>
                 </div>
 
-                <div class="form-group mb-4">
-                    <label>Payment Method</label>
-                    <div style="display: flex; gap: 1rem; margin-top: 10px;">
-                        <label
-                            style="flex: 1; display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; background: #fff;">
-                            <input type="radio" name="payment_method" value="online" checked
-                                style="width: 18px; height: 18px;">
-                            <div style="font-size: 0.9rem;">
-                                <strong>Online Payment</strong>
-                                <div style="font-size: 0.8rem; color: #666;">Pay now via Razorpay</div>
-                            </div>
-                        </label>
-                        <label
-                            style="flex: 1; display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; background: #fff;">
-                            <input type="radio" name="payment_method" value="offline"
-                                style="width: 18px; height: 18px;">
-                            <div style="font-size: 0.9rem;">
-                                <strong>Pay at Salon</strong>
-                                <div style="font-size: 0.8rem; color: #666;">Pay after service</div>
-                            </div>
-                        </label>
-                    </div>
+                <div class="form-group mb-4 d-none" style="display: none;">
+                    <input type="radio" name="payment_method" value="offline" checked>
                 </div>
 
                 <div class="form-group mt-4">
                     <p class="mb-3"
                         style="font-size: 0.9rem; color: var(--text-muted); padding: 10px; background: rgba(10, 35, 81, 0.05); border-radius: 6px;"
                         id="payment-note">
-                        <i class="fas fa-info-circle"></i> Service amount will be collected securely.
+                        <i class="fas fa-info-circle"></i> Payment will be collected at the salon after your service.
                     </p>
                     <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                        Pay & Confirm Booking
+                        Confirm Appointment
                     </button>
                     <!-- Loading state indicator container -->
                     <div id="booking-loading" class="text-center mt-2 d-none">
