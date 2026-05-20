@@ -153,6 +153,30 @@ a {
     color: var(--white);
 }
 
+.admin-access-link {
+    margin-left: 1.5rem;
+    color: var(--primary-blue);
+    font-size: 0.9rem;
+    opacity: 0.4;
+    transition: var(--transition-smooth);
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-access-link:hover {
+    opacity: 1;
+    background: rgba(212, 175, 55, 0.08); /* Subtle gold tint on hover */
+    transform: translateY(-1px) rotate(10deg) scale(1.1);
+    color: var(--accent-gold);
+}
+
+.admin-access-link i {
+    font-size: 0.85rem;
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -893,6 +917,43 @@ th {
         justify-content: center;
         padding: 1rem !important;
         font-size: 1.1rem;
+    }
+
+    .mobile-admin-access {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        width: auto !important;
+    }
+
+    .mobile-admin-access a {
+        background: rgba(10, 35, 81, 0.05);
+        padding: 0.8rem !important;
+        border-radius: 50%;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.5;
+        font-size: 1rem !important;
+        transition: var(--transition-smooth);
+    }
+
+    .mobile-admin-access a:active {
+        background: rgba(10, 35, 81, 0.1);
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+
+    .mobile-admin-access a span {
+        display: none; /* Hide label on mobile to keep it discreet */
+    }
+
+    .mobile-admin-access i {
+        margin: 0 !important;
+    }
+
+    .admin-access-link {
+        display: none; /* Hide the desktop link on mobile, use the one inside the menu */
     }
 
     .booking-container { flex-direction: column; }

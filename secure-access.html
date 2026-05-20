@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Arjun's Unisex Salon</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- FontAwesome styling for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="admin-body">
+
+    <!-- Auth Gate / Login Modal -->
+    <div id="loginOverlay" class="modal-overlay active" style="background: var(--primary-blue);">
+        <div class="modal" style="transform: none; max-width: 400px;">
+            <div class="text-center mb-4">
+                <div style="background: rgba(10, 35, 81, 0.05); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                    <i class="fas fa-shield-alt" style="color: var(--primary-blue); font-size: 1.5rem;"></i>
+                </div>
+                <h2 class="serif-font" style="color: var(--primary-blue); margin-bottom: 0.5rem;">Secure Access</h2>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Sign in to manage your salon dashboard</p>
+            </div>
+            
+            <p class="mb-4"
+                style="font-size: 0.85rem; color: #856404; background: #fff3cd; padding: 12px; border-radius: 6px; display: none;"
+                id="authMessage">
+            </p>
+
+            <button type="button" class="btn" id="googleLoginBtn"
+                style="width: 100%; justify-content: center; background: #fff; color: #444; border: 1px solid #ddd; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: all 0.2s; padding: 1rem; font-weight: 500;">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google"
+                    style="width: 20px; height: 20px; margin-right: 12px;">
+                Continue with Google
+            </button>
+            
+            <div class="text-center mt-4">
+                <a href="index.html" style="font-size: 0.85rem; color: var(--text-muted); text-decoration: none;">
+                    <i class="fas fa-arrow-left"></i> Back to Website
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logic -->
+    <script type="module" src="js/admin-auth.js"></script>
+</body>
+
+</html>
